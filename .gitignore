@@ -1,0 +1,4 @@
+node_modules
+cypress/fixtures/login.json
+cypress/screenshots
+cypress/videos
