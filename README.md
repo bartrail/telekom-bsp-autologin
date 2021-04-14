@@ -19,23 +19,18 @@ This little script requires Node 12.22 and [nvm](https://github.com/nvm-sh/nvm)
   - maybe `nvm install` to install the correct node version   
 - `npm install -g yarn`
 - `yarn install`
-- create a new file `cypress/fixtures/login.json` with your credentials so it looks like this and replace the credentials with your own:
+- create a new file `cypress.env.json` with your credentials so it looks like this and replace the credentials with your own:
   ```json
     {
-    "username": "your.username",
-    "password": "your.password123"
+    "USERNAME": "your.username",
+    "PASSWORD": "your.password123"
     }
   ```
 - `yarn cypress:run` to start the "test"
 
-If you want to repeatedly perform this test add something like this to your crontab:
-
-- ```
-  0 0 * * 0 /home/pi/telekom-bsp-autologin/autologin.sh > /home/pi/telekom-bsp-autologin/autologin.log 2&>1
-  ``` 
-  which executes the script every sunday.
-- replace the path to the file with your local path
-- You might want to check the logs for any errors. 
+If you want to repeatedly perform this test, simply add [encrypted repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+named `CYPRESS_USERNAME` and `CYPRESS_PASSWORD` - these are safe and can not be viewed from outside. Now schedule the
+github action to run once every week ;-)
 
 ### Note 
 

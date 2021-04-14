@@ -6,13 +6,11 @@ describe('telekom bsp - login', () => {
     cy.visit('https://bsp.t-mobile.de/portal/');
     cy.get('#consentAcceptAll').click();
 
-    cy.fixture('login').then(data => {
-      cy.get('#login').find('input[type=text]').type(data.username);
-      cy.get('#login').find('input[type=password]').type(data.password);
-      cy.get('#login').find('form').submit();
+    cy.get('#login').find('input[type=text]').type(Cypress.env('USERNAME'));
+    cy.get('#login').find('input[type=password]').type(Cypress.env('PASSWORD'));
+    cy.get('#login').find('form').submit();
 
-      cy.url().should('contain','/portal/bsp/UserMgtModule/account');
-    });
+    cy.url().should('contain','/portal/bsp/UserMgtModule/account');
   });
 
 })
