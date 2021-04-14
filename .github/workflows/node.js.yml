@@ -25,12 +25,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        
-    - name: Install dependencies
-      run: yarn install
-      
-    - name: execute tests
-      run: yarn cypress:run
-      env: # Or as an environment variable
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      env:
+        CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+        CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
