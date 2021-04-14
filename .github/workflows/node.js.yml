@@ -31,3 +31,6 @@ jobs:
       
     - name: execute tests
       run: yarn cypress:run
+      env: # Or as an environment variable
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
