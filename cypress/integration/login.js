@@ -10,7 +10,7 @@ describe('telekom bsp - login', () => {
     cy.get('#login').find('input[type=password]').type(Cypress.env('PASSWORD'));
     cy.get('#login').find('form').submit();
 
-    cy.url().should('contain','/portal/bsp/UserMgtModule/account');
+    cy.url().should('contain','/portal/bsp/home.xhtml');
   });
 
 })
